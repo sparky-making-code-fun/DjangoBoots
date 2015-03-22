@@ -12,14 +12,23 @@ class DateRangeField(forms.MultiValueField):
     default_error_messages = {'invalid_start': u'Enter a valid start date.',
                               'invalid_end': u'Enter a valid end date.'}
 
-    def __init__(self, field_klass, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         if not 'initial' in kwargs:
             kwargs['initial'] = ['', '']
 
-        fields = [field_klass(), field_klass()]
+        fields = [forms.DateField(label='Min Date'), forms.DateField(label='Max Date')]
 
         super(DateRangeField, self).__init__(fields=fields,
-                                             widget=DateRangeWidget(forms.TextInput),
+                                             widget=DateRangeWidget(),
                                              *args, **kwargs)
 
+    def compress(self, data_list):
+
+        if data_list:
+            return data_list
+        return None
+
+class TestForm(forms.Form):
+
+    date_range = DateRangeField()
 
