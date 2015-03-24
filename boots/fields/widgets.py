@@ -11,7 +11,8 @@ class CalendarWidget(forms.DateInput):
         '''Render a date widget as a bootstrap calendar'''
 
         if attrs is None:
-            attrs = {'id': name}
+            attrs = {'id': name, 'class': 'CalendarWidget'}
+
         data = {'name': name, 'date': value}
         attrs.update(data)
         data = {'attrs': attrs}
@@ -24,7 +25,12 @@ class DateRangeWidget(forms.MultiWidget):
 
     def __init__(self, attrs=None):
         widgets = (forms.DateInput(attrs={}),
-                       forms.DateInput(attrs={}))
+                   forms.DateInput(attrs={}))
+        if attrs is None:
+            attrs = {'class': 'DateRangeWidget'}
+        elif 'class' not in attrs.keys():
+            attrs.update({'class': 'DateRangeWidget'})
+
         super(DateRangeWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):

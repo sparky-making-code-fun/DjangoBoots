@@ -9,13 +9,16 @@ class TestWidgets(TestCase):
 
         cal_widg = widgets.CalendarWidget()
 
-        result = cal_widg.render('testname', '12-12-2015',
-                                attrs={'id': 'testid'})
-        needle = '<input type="text" date="12-12-2015"  id="testid"  name="testname"  >'
+        result = cal_widg.render('testname', '12-12-2015')
+        print result
+        needle = '<input type="text" date="12-12-2015"  id="testname" name="testname" class="CalendarWidget" >'
         self.assertInHTML(needle, result, 1)
 
     def test_date_range_widget(self):
 
-        dr_widg = widgets.DateRangeWidget(attrs={'id': 'testid', 'value': '12-12-2015'})
+        dr_widg = widgets.DateRangeWidget()
         result = dr_widg.render('testwidget', '12-12-2015')
-        print result
+        needle1 = '<input class="DateRangeWidget" name="testwidget_0" type="text" value="2015-12-12" />'
+        needle2 = '<input class="DateRangeWidget" name="testwidget_1" type="text" value="2015-12-12" />'
+        self.assertInHTML(needle1, result, count=1)
+        self.assertInHTML(needle2, result, count=1)
