@@ -1,7 +1,7 @@
 __author__ = 'sparky'
 from django import forms
 from django.template.loader import render_to_string
-from django.utils.html import format_html
+from datetime import datetime
 import os
 
 
@@ -22,13 +22,15 @@ class CalendarWidget(forms.DateInput):
 
 class DateRangeWidget(forms.MultiWidget):
 
-    def __init__(self):
+    def __init__(self, attrs=None):
         widgets = (forms.DateInput(attrs={}),
-                   forms.DateInput(attrs={}))
-        super(DateRangeWidget, self).__init__(widgets=widgets)
+                       forms.DateInput(attrs={}))
+        super(DateRangeWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
-        return value
+        if value:
+            return [datetime.strptime(value, '%d-%m-%Y'),datetime.strptime(value, '%d-%m-%Y')]
+        return [None, None]
 
     def format_output(self, rendered_widgets):
         template_path = '{0}/templates/boots'.format(os.path.dirname(
