@@ -7,6 +7,7 @@ class CalendarDateField(forms.DateField):
         a calendar picker datefield'''
     widget = CalendarWidget
 
+
 class DateRangeField(forms.MultiValueField):
 
     default_error_messages = {'invalid_start': u'Enter a valid start date.',
@@ -28,7 +29,4 @@ class DateRangeField(forms.MultiValueField):
             return data_list
         return None
 
-class TestForm(forms.Form):
-
-    date_range = DateRangeField()
 

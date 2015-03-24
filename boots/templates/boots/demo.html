@@ -2,16 +2,19 @@
 {% load staticfiles %}
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.css" />
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js"></script>
+<script>
+
+</script>
 </head>
 <body>
-{{ form.as_p }}
+<input id="datepicker" type="text" value="02-16-2012">
+<h1>Hello World Of BootStrap!</h1>
 </body>
-
 
 
 
