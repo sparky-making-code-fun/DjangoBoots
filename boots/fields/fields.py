@@ -1,6 +1,12 @@
 from django import forms
 from .widgets import (CalendarWidget,
-                      DateRangeWidget)
+                      DateRangeWidget,
+                      AtSymbolWidget)
+
+
+class AtSymbolInputField(forms.CharField):
+
+    widget = AtSymbolWidget
 
 class CalendarDateField(forms.DateField):
     '''A class that defines a custom widget for rendering

@@ -5,6 +5,18 @@ from datetime import datetime
 import os
 
 
+class AtSymbolWidget(forms.TextInput):
+
+    def render(self, name, value, attrs=None):
+        data = {'name': name, 'value': value}
+        if attrs is not None:
+            data.update(attrs)
+        template_path = '{0}/templates/boots'.format(os.path.dirname(
+            os.path.realpath(__file__)))
+        data = {'attrs': data}
+        return render_to_string('at_input.html', data, dirs=[template_path])
+
+
 class CalendarWidget(forms.DateInput):
 
     def render(self, name, value, attrs=None):
