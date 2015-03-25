@@ -10,8 +10,7 @@ class TestWidgets(TestCase):
         cal_widg = widgets.CalendarWidget()
 
         result = cal_widg.render('testname', '12-12-2015')
-        print result
-        needle = '<input type="text" date="12-12-2015"  id="testname" name="testname" class="CalendarWidget" >'
+        needle = '<input type="text"  date="12-12-2015"  class="CalendarWidget"  name="testname"  >'
         self.assertInHTML(needle, result, 1)
 
     def test_date_range_widget(self):
