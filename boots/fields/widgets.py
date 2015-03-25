@@ -35,8 +35,9 @@ class CalendarWidget(forms.DateInput):
         '''Render a date widget as a bootstrap calendar'''
 
         if attrs is None:
-            attrs = {'id': name, 'class': 'CalendarWidget'}
-
+            attrs = {'class': 'CalendarWidget'}
+        elif 'class' not in attrs.keys():
+            attrs.update({'class': 'CalendarWidget'})
         data = {'name': name, 'date': value}
         attrs.update(data)
         data = {'attrs': attrs}

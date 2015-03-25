@@ -6,7 +6,8 @@ from .widgets import (CalendarWidget,
 
 
 class DollarSignField(forms.IntegerField):
-    """A class that defines a custom widget for rendering a dollar sign input field"""
+    '''A class that defines a custom widget for rendering a dollar
+    sign input field'''
 
     widget = DollarSignWidget
 
