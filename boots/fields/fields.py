@@ -1,9 +1,16 @@
 from django import forms
 from .widgets import (CalendarWidget,
                       DateRangeWidget,
+                      RightSideAddOnWidget,
                       AtSymbolWidget,
                       DollarSignWidget)
 
+
+class RightSideAddOnField(forms.CharField):
+    '''A class that defines a custom widget for rendering a dollar
+    sign input field'''
+
+    widget = RightSideAddOnWidget
 
 class DollarSignField(forms.IntegerField):
     '''A class that defines a custom widget for rendering a dollar

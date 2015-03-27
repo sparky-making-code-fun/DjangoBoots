@@ -21,3 +21,10 @@ class TestWidgets(TestCase):
         needle2 = '<input class="DateRangeWidget" name="testwidget_1" type="text" value="2015-12-12" />'
         self.assertInHTML(needle1, result, count=1)
         self.assertInHTML(needle2, result, count=1)
+
+    def test_right_side_add_on(self):
+
+        widge = widgets.RightSideAddOnWidget()
+        expected = "anystringyouwant"
+        result = widge.render('bubba', '@home', attrs={"add_on_text": expected})
+        self.assertIn(expected, result)

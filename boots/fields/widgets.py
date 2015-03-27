@@ -5,6 +5,20 @@ from datetime import datetime
 import os
 
 
+class RightSideAddOnWidget(forms.TextInput):
+
+    def render(self, name, value, attrs=None):
+        data = {'name': name, 'value': value}
+        if "add_on_text" in attrs:
+            atext = attrs["add_on_text"]
+            del attrs["add_on_text"]
+        if attrs is not None:
+            data.update(attrs)
+        template_path = '{0}/templates/boots'.format(os.path.dirname(
+            os.path.realpath(__file__)))
+        data = {'attrs': data, "add_on_text": atext}
+        return render_to_string('right_add_on.html', data, dirs=[template_path])
+
 class DollarSignWidget(forms.NumberInput):
 
     def render(self, name, value, attrs=None):
