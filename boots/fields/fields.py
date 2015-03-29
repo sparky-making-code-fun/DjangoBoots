@@ -25,6 +25,7 @@ class AtSymbolInputField(forms.CharField):
 class CalendarDateField(forms.DateField):
     '''A class that defines a custom widget for rendering
         a calendar picker datefield'''
+
     widget = CalendarWidget
 
 

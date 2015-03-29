@@ -28,3 +28,11 @@ class TestWidgets(TestCase):
         expected = "anystringyouwant"
         result = widge.render('bubba', '@home', attrs={"add_on_text": expected})
         self.assertIn(expected, result)
+
+    def test_at_symbol_widget(self):
+
+        widge = widgets.AtSymbolWidget()
+        expected = "@anystringyouwant"
+        result = widge.render('bubba', 'nothome', attrs={"add_on_text": expected})
+        expected = """<span class="input-group-addon" id="basic-addon2">@anystringyouwant</span>"""
+        self.assertInHTML(expected, result)

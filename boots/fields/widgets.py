@@ -4,8 +4,9 @@ from django.template.loader import render_to_string
 from datetime import datetime
 import os
 
+class AddOnMixin(object):
 
-class RightSideAddOnWidget(forms.TextInput):
+    template = None
 
     def render(self, name, value, attrs=None):
         data = {'name': name, 'value': value}
@@ -17,7 +18,11 @@ class RightSideAddOnWidget(forms.TextInput):
         template_path = '{0}/templates/boots'.format(os.path.dirname(
             os.path.realpath(__file__)))
         data = {'attrs': data, "add_on_text": atext}
-        return render_to_string('right_add_on.html', data, dirs=[template_path])
+        return render_to_string(self.template, data, dirs=[template_path])
+
+class RightSideAddOnWidget(forms.TextInput):
+    pass
+
 
 class DollarSignWidget(forms.NumberInput):
 
@@ -31,16 +36,8 @@ class DollarSignWidget(forms.NumberInput):
         data = {'attrs': data}
         return render_to_string('dollar_sign.html', data, dirs=[template_path])
 
-class AtSymbolWidget(forms.TextInput):
-
-    def render(self, name, value, attrs=None):
-        data = {'name': name, 'value': value}
-        if attrs is not None:
-            data.update(attrs)
-        template_path = '{0}/templates/boots'.format(os.path.dirname(
-            os.path.realpath(__file__)))
-        data = {'attrs': data}
-        return render_to_string('at_input.html', data, dirs=[template_path])
+class AtSymbolWidget(AddOnMixin, forms.TextInput):
+    template = "at_input.html"
 
 
 class CalendarWidget(forms.DateInput):
