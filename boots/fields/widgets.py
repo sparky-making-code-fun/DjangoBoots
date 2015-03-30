@@ -14,6 +14,7 @@ class AddOnMixin(object):
 
     def render(self, name, value, attrs=None):
         data = {'name': name, 'value': value}
+        atext = ''
         if "add_on_text" in attrs:
             atext = attrs["add_on_text"]
             del attrs["add_on_text"]

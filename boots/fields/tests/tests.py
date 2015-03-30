@@ -53,7 +53,8 @@ class TestFields(TestCase):
 
     def test_dropdown_field(self):
         data = {'actions':[{'href': 'http://www.google.com', 'label': 'Google Thing'},
-                           {'href': 'http://fark.com', 'label': 'Fark Thing'}]
+                           {'href': 'http://fark.com', 'label': 'Fark Thing'}
+                           ]
                 }
         ddf = boot_fields.DropDownField(data, max_length=2)
         needle = '<li><a href="http://fark.com">Fark Thing</a></li>'
