@@ -56,4 +56,6 @@ class TestFields(TestCase):
                            {'href': 'http://fark.com', 'label': 'Fark Thing'}]
                 }
         ddf = boot_fields.DropDownField(data, max_length=2)
-        print ddf.widget.render('tstname', 'testvalue', attrs={'id':'testid'})
+        needle = '<li><a href="http://fark.com">Fark Thing</a></li>'
+        result = ddf.widget.render('tstname', 'testvalue', attrs={'id':'testid'})
+        self.assertInHTML(needle, result)
