@@ -3,8 +3,15 @@ from .widgets import (CalendarWidget,
                       DateRangeWidget,
                       RightSideAddOnWidget,
                       AtSymbolWidget,
-                      DollarSignWidget)
+                      DollarSignWidget,
+                      DropDownWidget)
 
+
+class DropDownField(forms.CharField):
+
+    def __init__(self, dropdown, *args, **kwargs):
+        self.widget = DropDownWidget(dropdown)
+        super(DropDownField, self).__init__(*args, **kwargs)
 
 class RightSideAddOnField(forms.CharField):
     '''A class that defines a custom widget for rendering a dollar

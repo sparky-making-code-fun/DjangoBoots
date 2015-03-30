@@ -1,0 +1,16 @@
+<div class="input-group">
+  <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action
+          <span class="caret">
+          </span>
+      </button>
+      {%  if dropdown.actions %}
+          <ul class="dropdown-menu" role="menu">
+              {% for action in dropdown.actions %}
+              <li><a href="{{ action.href }}">{{ action.label }}</a></li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+  </div>
+  <input type="text" class="form-control" aria-label="...">
+</div>

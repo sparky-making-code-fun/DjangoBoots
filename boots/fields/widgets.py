@@ -4,6 +4,10 @@ from django.template.loader import render_to_string
 from datetime import datetime
 import os
 
+
+
+
+
 class AddOnMixin(object):
 
     template = None
@@ -22,6 +26,23 @@ class AddOnMixin(object):
 
 class RightSideAddOnWidget(forms.TextInput):
     pass
+
+
+class DropDownWidget(forms.TextInput):
+
+    template = "dropdown_input.html"
+
+    def __init__(self, dropdown, *args, **kwargs):
+        self.dropdown = dropdown
+        super(DropDownWidget, self).__init__(**kwargs)
+
+    def render(self, name, value, attrs=None):
+
+        data = {'name': name, 'value': value,
+                'attrs': attrs, 'dropdown': self.dropdown}
+        template_path = '{0}/templates/boots'.format(os.path.dirname(
+            os.path.realpath(__file__)))
+        return render_to_string(self.template, data, dirs=[template_path])
 
 
 class DollarSignWidget(forms.NumberInput):

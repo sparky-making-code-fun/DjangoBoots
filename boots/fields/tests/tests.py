@@ -1,5 +1,6 @@
 from django.test import TestCase
 from boots.fields import widgets
+from boots.fields import fields as boot_fields
 
 
 class TestWidgets(TestCase):
@@ -36,3 +37,23 @@ class TestWidgets(TestCase):
         result = widge.render('bubba', 'nothome', attrs={"add_on_text": expected})
         expected = """<span class="input-group-addon" id="basic-addon2">@anystringyouwant</span>"""
         self.assertInHTML(expected, result)
+
+    def test_dropdown_widget(self):
+
+        dd_widg = widgets.DropDownWidget(dropdown={'actions':[{'href': 'http://www.google.com',
+                                                               'label': 'Google Thing'},
+                                                              {'href': 'http://fark.com',
+                                                               'label': 'Fark Thing'}
+                                                             ]}, attrs={'id': 'testid'})
+        result = dd_widg.render('fake_name', 'fake_value', attrs=dd_widg.attrs)
+        needle = '<li><a href="http://fark.com">Fark Thing</a></li>'
+        self.assertInHTML(needle, result)
+
+class TestFields(TestCase):
+
+    def test_dropdown_field(self):
+        data = {'actions':[{'href': 'http://www.google.com', 'label': 'Google Thing'},
+                           {'href': 'http://fark.com', 'label': 'Fark Thing'}]
+                }
+        ddf = boot_fields.DropDownField(data, max_length=2)
+        print ddf.widget.render('tstname', 'testvalue', attrs={'id':'testid'})
