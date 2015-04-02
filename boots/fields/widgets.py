@@ -25,12 +25,16 @@ class AddOnMixin(object):
         data = {'attrs': data, "add_on_text": atext}
         return render_to_string(self.template, data, dirs=[template_path])
 
+
 class RightSideAddOnWidget(forms.TextInput):
-    pass
+    template = "right_add_on.html"
+
+
+class AtSymbolWidget(AddOnMixin, forms.TextInput):
+    template = "at_input.html"
 
 
 class DropDownWidget(forms.TextInput):
-
     template = "dropdown_input.html"
 
     def __init__(self, dropdown, *args, **kwargs):
@@ -57,9 +61,6 @@ class DollarSignWidget(forms.NumberInput):
             os.path.realpath(__file__)))
         data = {'attrs': data}
         return render_to_string('dollar_sign.html', data, dirs=[template_path])
-
-class AtSymbolWidget(AddOnMixin, forms.TextInput):
-    template = "at_input.html"
 
 
 class CalendarWidget(forms.DateInput):
