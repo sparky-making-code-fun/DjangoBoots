@@ -30,13 +30,6 @@ class TestWidgets(TestCase):
         result = widge.render('bubba', '@home', attrs={"add_on_text": expected})
         self.assertIn(expected, result)
 
-    def test_at_symbol_widget(self):
-
-        widge = widgets.AtSymbolWidget()
-        expected = "@anystringyouwant"
-        result = widge.render('bubba', 'nothome', attrs={"add_on_text": expected})
-        expected = """<span class="input-group-addon" id="basic-addon2">@anystringyouwant</span>"""
-        self.assertInHTML(expected, result)
 
     def test_dropdown_widget(self):
 
@@ -59,4 +52,18 @@ class TestFields(TestCase):
         ddf = boot_fields.DropDownField(data, max_length=2)
         needle = '<li><a href="http://fark.com">Fark Thing</a></li>'
         result = ddf.widget.render('tstname', 'testvalue', attrs={'id':'testid'})
+        self.assertInHTML(needle, result)
+
+    def test_change_at_symbol_field(self):
+        expected = "somestring"
+        f = boot_fields.AtSymbolInputField(expected, symbol='!')
+        result = f.widget.render("name", "value")
+        needle = """<span class="input-group-addon" id="basic-addon2">!{0}</span>""".format(expected)
+        self.assertInHTML(needle, result)
+
+    def test_at_symbol_field(self):
+        expected = "somestring"
+        f = boot_fields.AtSymbolInputField(expected)
+        result = f.widget.render("name", "value")
+        needle = """<span class="input-group-addon" id="basic-addon2">@{0}</span>""".format(expected)
         self.assertInHTML(needle, result)

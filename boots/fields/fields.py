@@ -2,7 +2,7 @@ from django import forms
 from .widgets import (CalendarWidget,
                       DateRangeWidget,
                       RightSideAddOnWidget,
-                      AtSymbolWidget,
+                      SymbolWidget,
                       DollarSignWidget,
                       DropDownWidget)
 
@@ -27,7 +27,10 @@ class DollarSignField(forms.IntegerField):
 
 class AtSymbolInputField(forms.CharField):
 
-    widget = AtSymbolWidget
+
+    def __init__(self, text, symbol="@", *args, **kwargs):
+        super(AtSymbolInputField, self).__init__(*args, **kwargs)
+        self.widget = SymbolWidget(text, symbol=symbol)
 
 class CalendarDateField(forms.DateField):
     '''A class that defines a custom widget for rendering
