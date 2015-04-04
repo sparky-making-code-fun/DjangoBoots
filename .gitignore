@@ -57,3 +57,5 @@ target/
 .idea
 node_modules
 8416OS_Code
+bootstrap-datepicker
+db.sqlite3
