@@ -58,3 +58,7 @@ target/
 node_modules
 8416OS_Code
 .ropenproject
+bootstrap-datepicker
+db.sqlite3
+.ropeproject
+reports/
