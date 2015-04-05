@@ -11,7 +11,3 @@ class DemoForm(forms.Form):
     data = {'actions': [{'href': 'http://google.com', 'label': 'Search Google'},
                         {'href': 'http://bing.com', 'label': 'Search Bing'}]}
     searchterm = boot_fields.DropDownField(data, max_length=30)
-
-
-
-
