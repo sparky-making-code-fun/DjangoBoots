@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = (
+DEFAULT_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,6 +37,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
+PROJECT_APPS = (
+    'boots',
+)
+
+INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,23 +59,17 @@ ROOT_URLCONF = 'boots.urls'
 WSGI_APPLICATION = 'boots.wsgi.application'
 
 
-#DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#            'NAME': 'djangoboots',                      # Or path to database file if using sqlite3.
-#            # The following settings are not used with sqlite3:
-#            'USER': 'django2',
-#            'PASSWORD': 'password',
-#            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-#            'PORT': '',                      # Set to empty string for default.
-#        }
-#    }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'djangoboots',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'django2',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+        }
     }
-}
 
 
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -98,7 +98,6 @@ TEMPLATE_DIRS = (
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 import os
 STATIC_URL = '/static/'
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 STATICFILES_DIRS = (
-  os.path.join(SITE_ROOT, 'static/'),
+  os.path.join(BASE_DIR, 'static/'),
 )

@@ -6,31 +6,41 @@ import os
 
 
 
-
-
-class AddOnMixin(object):
+class AddOnMixin(forms.TextInput):
 
     template = None
+    symbol = None
+    text = None
 
     def render(self, name, value, attrs=None):
         data = {'name': name, 'value': value}
-        atext = ''
-        if "add_on_text" in attrs:
-            atext = attrs["add_on_text"]
-            del attrs["add_on_text"]
         if attrs is not None:
             data.update(attrs)
+        data = {'attrs': data, "add_on_text": self.text, "symbol": self.symbol}
         template_path = '{0}/templates/boots'.format(os.path.dirname(
             os.path.realpath(__file__)))
-        data = {'attrs': data, "add_on_text": atext}
         return render_to_string(self.template, data, dirs=[template_path])
 
-class RightSideAddOnWidget(forms.TextInput):
-    pass
 
+class RightSideAddOnWidget(forms.TextInput):
+    template = "right_add_on.html"
+
+
+class SymbolWidget(AddOnMixin):
+    template = "at_input.html"
+    def __init__(self, text, symbol=None, *args, **kwargs):
+        """
+        :param symbol:
+        :return:
+
+        if symbol is None throw an exception
+        otherwise store symbol in self.symbol
+        """
+        super(SymbolWidget, self).__init__(*args, **kwargs)
+        self.symbol = symbol
+        self.text = text
 
 class DropDownWidget(forms.TextInput):
-
     template = "dropdown_input.html"
 
     def __init__(self, dropdown, *args, **kwargs):
@@ -57,9 +67,6 @@ class DollarSignWidget(forms.NumberInput):
             os.path.realpath(__file__)))
         data = {'attrs': data}
         return render_to_string('dollar_sign.html', data, dirs=[template_path])
-
-class AtSymbolWidget(AddOnMixin, forms.TextInput):
-    template = "at_input.html"
 
 
 class CalendarWidget(forms.DateInput):
