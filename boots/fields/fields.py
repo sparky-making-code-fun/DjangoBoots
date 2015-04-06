@@ -1,3 +1,6 @@
+"""
+Basic Bootstrap Field definitions
+"""
 from django import forms
 from .widgets import (CalendarWidget,
                       DateRangeWidget,
@@ -13,11 +16,13 @@ class DropDownField(forms.CharField):
         self.widget = DropDownWidget(dropdown)
         super(DropDownField, self).__init__(*args, **kwargs)
 
+
 class RightSideAddOnField(forms.CharField):
     '''A class that defines a custom widget for rendering a dollar
     sign input field'''
 
     widget = RightSideAddOnWidget
+
 
 class DollarSignField(forms.IntegerField):
     '''A class that defines a custom widget for rendering a dollar
@@ -25,12 +30,13 @@ class DollarSignField(forms.IntegerField):
 
     widget = DollarSignWidget
 
-class AtSymbolInputField(forms.CharField):
 
+class AtSymbolInputField(forms.CharField):
 
     def __init__(self, text, symbol="@", *args, **kwargs):
         super(AtSymbolInputField, self).__init__(*args, **kwargs)
         self.widget = SymbolWidget(text, symbol=symbol)
+
 
 class CalendarDateField(forms.DateField):
     '''A class that defines a custom widget for rendering
@@ -45,10 +51,11 @@ class DateRangeField(forms.MultiValueField):
                               'invalid_end': u'Enter a valid end date.'}
 
     def __init__(self, *args, **kwargs):
-        if not 'initial' in kwargs:
+        if 'initial' not in kwargs:
             kwargs['initial'] = ['', '']
 
-        fields = [forms.DateField(label='Min Date'), forms.DateField(label='Max Date')]
+        fields = [forms.DateField(label='Min Date'),
+                  forms.DateField(label='Max Date')]
 
         super(DateRangeField, self).__init__(fields=fields,
                                              widget=DateRangeWidget(),
@@ -59,5 +66,3 @@ class DateRangeField(forms.MultiValueField):
         if data_list:
             return data_list
         return None
-
-

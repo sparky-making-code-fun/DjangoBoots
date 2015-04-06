@@ -5,7 +5,6 @@ from datetime import datetime
 import os
 
 
-
 class AddOnMixin(forms.TextInput):
 
     template = None
@@ -28,6 +27,7 @@ class RightSideAddOnWidget(forms.TextInput):
 
 class SymbolWidget(AddOnMixin):
     template = "at_input.html"
+
     def __init__(self, text, symbol=None, *args, **kwargs):
         """
         :param symbol:
@@ -39,6 +39,7 @@ class SymbolWidget(AddOnMixin):
         super(SymbolWidget, self).__init__(*args, **kwargs)
         self.symbol = symbol
         self.text = text
+
 
 class DropDownWidget(forms.TextInput):
     template = "dropdown_input.html"
@@ -100,7 +101,8 @@ class DateRangeWidget(forms.MultiWidget):
 
     def decompress(self, value):
         if value:
-            return [datetime.strptime(value, '%d-%m-%Y'),datetime.strptime(value, '%d-%m-%Y')]
+            return [datetime.strptime(value, '%d-%m-%Y'),
+                    datetime.strptime(value, '%d-%m-%Y')]
         return [None, None]
 
     def format_output(self, rendered_widgets):
@@ -108,4 +110,3 @@ class DateRangeWidget(forms.MultiWidget):
             os.path.realpath(__file__)))
         data = {'min': rendered_widgets[0], 'max': rendered_widgets[1]}
         return render_to_string('date_range.html', data, dirs=[template_path])
-
