@@ -6,7 +6,7 @@ class DemoForm(forms.Form):
 
     date_range = boot_fields.DateRangeField()
     calendar = boot_fields.CalendarDateField()
-    name = boot_fields.AtSymbolInputField()
+    name = boot_fields.AtSymbolInputField('demofinchfoobarbaz')
     money = boot_fields.DollarSignField()
     data = {'actions': [{'href': 'http://google.com', 'label': 'Search Google'},
                         {'href': 'http://bing.com', 'label': 'Search Bing'}]}
