@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Widgets for bootstrap fields
 """
@@ -17,6 +18,13 @@ class AddOnMixin(forms.TextInput):
     text = None
 
     def render(self, name, value, attrs=None):
+        """
+
+        :param name:
+        :param value:
+        :param attrs:
+        :return:
+        """
         data = {'name': name, 'value': value}
         if attrs is not None:
             data.update(attrs)
@@ -27,6 +35,9 @@ class AddOnMixin(forms.TextInput):
 
 
 class RightSideAddOnWidget(forms.TextInput):
+    """
+    Right side Addon This should likely be refactored
+    """
     template = "right_add_on.html"
 
 
@@ -82,6 +93,7 @@ class DropDownWidget(forms.TextInput):
         return render_to_string(self.template, data, dirs=[template_path])
 
 
+# noinspection PyUnresolvedReferences
 class DollarSignWidget(forms.NumberInput):
     """
     Renders an input with a $ sign.
@@ -114,6 +126,9 @@ class CalendarWidget(forms.DateInput):
     def render(self, name, value, attrs=None):
         """
         Render a date widget as a bootstrap calendar
+        :param attrs:
+        :param value:
+        :param name:
         """
 
         if attrs is None:
@@ -130,6 +145,11 @@ class CalendarWidget(forms.DateInput):
 
 class DateRangeWidget(forms.MultiWidget):
 
+    """
+
+    :param attrs:
+    """
+
     def __init__(self, attrs=None):
         widgets = (forms.DateInput(attrs={}),
                    forms.DateInput(attrs={}))
@@ -141,12 +161,22 @@ class DateRangeWidget(forms.MultiWidget):
         super(DateRangeWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
+        """
+
+        :param value:
+        :return:
+        """
         if value:
             return [datetime.strptime(value, '%d-%m-%Y'),
                     datetime.strptime(value, '%d-%m-%Y')]
         return [None, None]
 
     def format_output(self, rendered_widgets):
+        """
+
+        :param rendered_widgets:
+        :return:
+        """
         template_path = '{0}/templates/boots'.format(os.path.dirname(
             os.path.realpath(__file__)))
         data = {'min': rendered_widgets[0], 'max': rendered_widgets[1]}

@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 A demo form so we can easily show off and test
 """

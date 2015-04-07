@@ -1,8 +1,10 @@
+# coding=utf-8
 """
 Jenkins settings file
 """
 from base import *
 
+# noinspection PyUnresolvedReferences
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -16,6 +18,6 @@ JENKINS_TASKS = (
     'django_jenkins.tasks.run_pep8',
     'django_jenkins.tasks.run_pyflakes',
     # 'django_jenkins.tasks.run_jshint',
-    #'django_jenkins.tasks.run_csslint',
+    # 'django_jenkins.tasks.run_csslint',
     'django_jenkins.tasks.run_sloccount'
 )

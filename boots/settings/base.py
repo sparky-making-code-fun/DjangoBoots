@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for boots project.
 
@@ -92,6 +93,7 @@ USE_L10N = True
 USE_TZ = True
 
 PATH_PROJECT = os.path.realpath(os.path.dirname(__file__))
+# noinspection PyUnresolvedReferences
 TEMPLATE_DIRS = (
     PATH_PROJECT + '/templates/',
 

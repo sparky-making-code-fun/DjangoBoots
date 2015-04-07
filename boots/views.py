@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 This is really a throw away class We just need to view
 what we are working on
@@ -9,6 +10,7 @@ from .forms import DemoForm
 from .elements import display_elements
 
 
+# noinspection PyUnusedLocal,PyUnresolvedReferences
 class DemoView(View):
     """Just looking at our widgets"""
 

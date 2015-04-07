@@ -1,3 +1,7 @@
+# coding=utf-8
+"""
+First test written just to make sure it works
+"""
 from django.test import TestCase
 
 
