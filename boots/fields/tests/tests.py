@@ -1,12 +1,18 @@
-from django.test import TestCase
+# coding=utf-8
+"""
+Widget Tests
+"""
+import django.test
 from boots.fields import widgets
 from boots.fields import fields as boot_fields
 
 
-class TestWidgets(TestCase):
+class TestWidgets(django.test.TestCase):
 
     def test_calendar_widget_render(self):
-        '''does our calendar widget have an ID?'''
+        """
+        does our calendar widget have an ID?
+        """
 
         cal_widg = widgets.CalendarWidget()
 
@@ -45,7 +51,7 @@ class TestWidgets(TestCase):
         self.assertInHTML(needle, result)
 
 
-class TestFields(TestCase):
+class TestFields(django.test.TestCase):
 
     def test_dropdown_field(self):
         data = {'actions': [{'href': 'http://www.google.com',

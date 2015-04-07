@@ -1,3 +1,6 @@
+"""
+A demo form so we can easily show off and test
+"""
 __author__ = 'sparky'
 from django import forms
 from .fields import fields as boot_fields

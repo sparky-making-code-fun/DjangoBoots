@@ -6,8 +6,13 @@ import os
 
 
 class BaseDisplayElement(object):
-
+    """
+    A base class for display elements
+    """
     def render(self):
+        """
+        This method should be implemented on child classes not here
+        """
         pass
 
 

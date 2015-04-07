@@ -1,3 +1,6 @@
+"""
+Widgets for bootstrap fields
+"""
 __author__ = 'sparky'
 from django import forms
 from django.template.loader import render_to_string
@@ -6,7 +9,9 @@ import os
 
 
 class AddOnMixin(forms.TextInput):
-
+    """
+    Add on mixin class for text input widgets
+    """
     template = None
     symbol = None
     text = None
@@ -26,6 +31,13 @@ class RightSideAddOnWidget(forms.TextInput):
 
 
 class SymbolWidget(AddOnMixin):
+    """
+
+    :param text:
+    :param symbol:
+    :param args:
+    :param kwargs:
+    """
     template = "at_input.html"
 
     def __init__(self, text, symbol=None, *args, **kwargs):
@@ -42,14 +54,27 @@ class SymbolWidget(AddOnMixin):
 
 
 class DropDownWidget(forms.TextInput):
+    """
+
+    :param dropdown:
+    :param args:
+    :param kwargs:
+    """
     template = "dropdown_input.html"
 
     def __init__(self, dropdown, *args, **kwargs):
         self.dropdown = dropdown
-        super(DropDownWidget, self).__init__(**kwargs)
+        super(DropDownWidget, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None):
 
+        """
+        :param name:
+        :param value:
+        :param attrs:
+        :return:
+        :rtype : str
+        """
         data = {'name': name, 'value': value,
                 'attrs': attrs, 'dropdown': self.dropdown}
         template_path = '{0}/templates/boots'.format(os.path.dirname(
@@ -58,9 +83,20 @@ class DropDownWidget(forms.TextInput):
 
 
 class DollarSignWidget(forms.NumberInput):
-
+    """
+    Renders an input with a $ sign.
+    """
+    # TODO should this be a currency widget?
+    # TODO change this to be used as an instance
+    # and initialized in the field's __init__ method
     def render(self, name, value, attrs=None):
-        """Render a dollar number input widget"""
+        """
+        Render a dollar number input widget
+
+        :param attrs:
+        :param value:
+        :param name:
+        """
         data = {'name': name, 'value': value}
         if attrs is not None:
             data.update(attrs)
@@ -71,9 +107,14 @@ class DollarSignWidget(forms.NumberInput):
 
 
 class CalendarWidget(forms.DateInput):
+    """
+    Calendar date select widget
+    """
 
     def render(self, name, value, attrs=None):
-        '''Render a date widget as a bootstrap calendar'''
+        """
+        Render a date widget as a bootstrap calendar
+        """
 
         if attrs is None:
             attrs = {'class': 'CalendarWidget'}

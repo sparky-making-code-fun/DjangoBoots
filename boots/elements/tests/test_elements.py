@@ -1,13 +1,13 @@
-from django.test import TestCase
+"""
+Tests for page element classes
+"""
+import django.test
 from boots.elements import display_elements
 
 
-class TestPageHeader(TestCase):
-
-
+class TestPageHeader(django.test.TestCase):
     def test_page_header(self):
-
-        title ='This is the Title'
+        title = 'This is the Title'
         sub = 'this is the sub'
         ph = display_elements.PageHeader(title, sub=sub)
         result = str(ph)

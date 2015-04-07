@@ -12,8 +12,12 @@ from .elements import display_elements
 class DemoView(View):
     """Just looking at our widgets"""
 
+    # noinspection PyMethodMayBeStatic
     def get(self, request):
-        '''Just a simple demo view for the widgets'''
+        """
+        Just a simple demo view for the widgets
+        :param request:
+        """
 
         form = DemoForm()
         title = 'DjangoBoots Demo Page!'

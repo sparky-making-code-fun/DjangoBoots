@@ -1,3 +1,6 @@
+"""
+Developer settings file
+"""
 from settings import *
 
 DATABASES = {

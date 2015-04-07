@@ -1,3 +1,6 @@
+"""
+Jenkins settings file
+"""
 from base import *
 
 DATABASES = {
@@ -9,11 +12,10 @@ DATABASES = {
 
 INSTALLED_APPS = INSTALLED_APPS + ('django_jenkins',)
 
-
 JENKINS_TASKS = (
-            'django_jenkins.tasks.run_pep8',
-            'django_jenkins.tasks.run_pyflakes',
-            #'django_jenkins.tasks.run_jshint',
-            #'django_jenkins.tasks.run_csslint',
-            'django_jenkins.tasks.run_sloccount'
+    'django_jenkins.tasks.run_pep8',
+    'django_jenkins.tasks.run_pyflakes',
+    # 'django_jenkins.tasks.run_jshint',
+    #'django_jenkins.tasks.run_csslint',
+    'django_jenkins.tasks.run_sloccount'
 )
