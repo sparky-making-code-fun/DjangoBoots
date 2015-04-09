@@ -4,7 +4,7 @@ Main urls file for module
 """
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from .views import DemoView
+from boots.views import DemoView
 
 urlpatterns = patterns('',
                        # Examples:
