@@ -7,6 +7,9 @@ module.exports = function(grunt) {
             app: {
                 files: { "css/main.css": "less/main.less" }
             }
+        },
+        qunit: {
+            // configuration here
         }
 
     });
