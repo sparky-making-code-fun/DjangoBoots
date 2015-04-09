@@ -62,3 +62,7 @@ bootstrap-datepicker
 db.sqlite3
 .ropeproject
 reports/
+*.rst
+*.bat
+
+boots/.ropeproject
