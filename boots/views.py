@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from django.views.generic import View
-from .forms import DemoForm
+from boots.forms import DemoForm
 from .elements import display_elements
 
 class DemoView(View):
