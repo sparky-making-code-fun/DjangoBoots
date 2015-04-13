@@ -13,12 +13,12 @@
 </script>
 </head>
 <body>
-<table>
+<ul>
 <form method="post" action="" novalidate>
     {% csrf_token %}
-    {{ form.as_table }}
+    {{ form.as_ul }}
     <input type="submit" />
 </form>
-    </table>
+    </ul>
 </body>
 </html>
