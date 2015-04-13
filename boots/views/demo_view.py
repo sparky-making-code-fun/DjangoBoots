@@ -5,27 +5,25 @@ what we are working on
 """
 
 from django.shortcuts import render_to_response
-from django.views.generic import View
+from boots.views.base import BootsFixedContainerView
 from boots.forms import DemoForm
-from .elements import display_elements
+from boots.elements import display_elements
 
 
 # noinspection PyUnusedLocal,PyUnresolvedReferences
-class DemoView(View):
+class DemoView(BootsFixedContainerView):
     """Just looking at our widgets"""
+    template_name = 'boots/demo.html'
 
     # noinspection PyMethodMayBeStatic
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         """
         Just a simple demo view for the widgets
         :param request:
         """
-
         form = DemoForm()
         title = 'DjangoBoots Demo Page!'
         sub = 'Its a work in progress'
         page_header = display_elements.PageHeader(title, sub=sub)
-
-        return render_to_response('boots/demo.html',
-                                  {'form': form,
-                                   'pagehead': page_header})
+        elements = {'elements': [page_header, form]}
+        return self.render(elements)
