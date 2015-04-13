@@ -4,13 +4,12 @@ This is really a throw away class We just need to view
 what we are working on
 """
 
-
 from boots.views.base import BootsFixedContainerView
 from boots.elements import display_elements
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import View
-from boots.forms import forms as boots_forms
+from boots.forms import demo_form as boots_forms
 
 
 class ErrorDemo(View):
@@ -47,7 +46,7 @@ class DemoView(BootsFixedContainerView):
         Just a simple demo view for the widgets
         :param request:
         """
-        form = boots_form.DemoForm()
+        form = boots_forms.DemoForm()
         title = 'DjangoBoots Demo Page!'
         sub = 'Its a work in progress'
         page_header = display_elements.PageHeader(title, sub=sub)
