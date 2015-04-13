@@ -11,8 +11,8 @@ class TestBootsBaseForm(test.TestCase):
 
     def test_as_ul(self):
         number = 'bubba'
-        expected = """<div class="alert alert-danger" role="alert">
-        <ul class="errorlist"><li>Enter a whole number.</li></ul></div>"""
+        expected = """<li style="list-style-type: none;" class="alert alert-danger" role="alert"><ul class="errorlist">
+        <li>Enter a whole number.</li></ul></li>"""
         data = {"number": number}
         f = Foo(data)
         f.is_valid()
@@ -31,12 +31,10 @@ class TestBootsBaseForm(test.TestCase):
 
     def test_as_table(self):
         number = 'bubba'
-        expected = """<div class="alert alert-danger" role="alert">
-        <ul class="errorlist"><li>Enter a whole number.</li></ul></div>"""
-        # <tr><th><label for="id_number">Number:</label></th><td><ul class="errorlist"><li>Enter a whole number.</li></ul><input id="id_number" name="number" type="number" value="bubba" /></td></tr>
+        expected = """<td colspan="2" class="alert alert-danger" role="alert"><ul class="errorlist">
+        <li>Enter a whole number.</li></ul>"""
         data = {"number": number}
         f = Foo(data)
         f.is_valid()
         result = f.as_table()
-        print result
         self.assertInHTML(expected, result)
