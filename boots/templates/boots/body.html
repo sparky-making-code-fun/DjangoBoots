@@ -1,0 +1,12 @@
+{% extends 'boots/global.html' %}
+{% block head_block %}
+    {% include 'boots/head.html' %}
+{% endblock %}
+{% block body_block %}
+<body>
+<div class="{{ container_type }}">
+{% block content %}default content{% endblock %}
+</div>
+
+</body>
+{% endblock %}
