@@ -1,0 +1,8 @@
+{% extends 'boots/global.html' %}
+{% block head_block %}
+    {% include 'boots/head.html' %}
+    <body>
+    {% load bootstrap_grids %}
+    {% block body_content %}{% grid %}{% endblock %}
+    </body>
+{% endblock %}
