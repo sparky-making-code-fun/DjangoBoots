@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for boots project.
 
@@ -10,6 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -58,18 +60,20 @@ ROOT_URLCONF = 'boots.urls'
 
 WSGI_APPLICATION = 'boots.wsgi.application'
 
-
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'djangoboots',                      # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'django2',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-            'PORT': '',                      # Set to empty string for default.
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'djangoboots',  # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'django2',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        # Empty for localhost through domain sockets or
+        # '127.0.0.1' for localhost through TCP.
+        'PORT': '',  # Set to empty string for default.
     }
+}
 
 
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -89,6 +93,7 @@ USE_L10N = True
 USE_TZ = True
 
 PATH_PROJECT = os.path.realpath(os.path.dirname(__file__))
+# noinspection PyUnresolvedReferences
 TEMPLATE_DIRS = (
     PATH_PROJECT + '/templates/',
 
@@ -97,7 +102,6 @@ TEMPLATE_DIRS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 import os
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'static/'),
-)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
