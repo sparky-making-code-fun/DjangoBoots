@@ -7,7 +7,15 @@ from .widgets import (CalendarWidget,
                       RightSideAddOnWidget,
                       SymbolWidget,
                       DollarSignWidget,
-                      DropDownWidget)
+                      DropDownWidget,
+                      RadioWidget)
+
+
+class RadioField(forms.RadioSelect):
+
+    def __init__(self, radio, *args, **kwargs):
+        self.widget = RadioWidget(radio)
+        super(RadioField, self).__init__(*args, **kwargs)
 
 
 class DropDownField(forms.CharField):

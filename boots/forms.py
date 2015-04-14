@@ -14,3 +14,4 @@ class DemoForm(forms.Form):
         dict(href='http://google.com', label='Search Google'),
         dict(href='http://bing.com', label='Search Bing')])
     searchterm = boot_fields.DropDownField(data, max_length=30)
+    radio = boot_fields.RadioField()

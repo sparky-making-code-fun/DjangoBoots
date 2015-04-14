@@ -110,3 +110,21 @@ class DateRangeWidget(forms.MultiWidget):
             os.path.realpath(__file__)))
         data = {'min': rendered_widgets[0], 'max': rendered_widgets[1]}
         return render_to_string('date_range.html', data, dirs=[template_path])
+
+
+class RadioWidget(forms.RadioSelect):
+    template = "radio_input.html"
+
+    def __init__(self, radio, *args, **kwargs):
+        self.radio = radio
+        super(RadioWidget, self).__init__(**kwargs)
+
+    def render(self, name, value, default=False):
+
+        data = {'name': name, 'value': value,
+                'default': default, 'radio': self.radio}
+        if default is not False:
+            data.update(default)
+        template_path = '{0}/templates/boots'.format(os.path.dirname(
+            os.path.realpath(__file__)))
+        return render_to_string(self.template, data, dirs=[template_path])

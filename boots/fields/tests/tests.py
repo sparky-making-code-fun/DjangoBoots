@@ -30,7 +30,6 @@ class TestWidgets(TestCase):
         result = widge.render('bubba', '@home', attrs={"add_on_text": expected})
         self.assertIn(expected, result)
 
-
     def test_dropdown_widget(self):
 
         dd_widg = widgets.DropDownWidget(dropdown={'actions':[{'href': 'http://www.google.com',
@@ -41,6 +40,13 @@ class TestWidgets(TestCase):
         result = dd_widg.render('fake_name', 'fake_value', attrs=dd_widg.attrs)
         needle = '<li><a href="http://fark.com">Fark Thing</a></li>'
         self.assertInHTML(needle, result)
+
+    def test_radio_widget(self):
+
+        radio_widget = widgets.RadioWidget()
+        expected = False
+        result = radio_widget.render()
+
 
 class TestFields(TestCase):
 
