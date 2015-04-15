@@ -2,6 +2,7 @@
 """
 Main urls file for module
 """
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from boots.views.demo_view import DemoView, ErrorDemo
@@ -15,3 +16,8 @@ urlpatterns = patterns('',
                        url(r'^$', DemoView.as_view()),
                        url(r'^error/', ErrorDemo.as_view())
                        )
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += patterns('',
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    )

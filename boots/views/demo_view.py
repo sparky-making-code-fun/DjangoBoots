@@ -36,12 +36,12 @@ class ErrorDemo(View):
 
 
 # noinspection PyUnusedLocal,PyUnresolvedReferences
-class DemoView(BootsFixedContainerView):
+class DemoView(View):
     """Just looking at our widgets"""
     template_name = 'boots/demo.html'
 
     # noinspection PyMethodMayBeStatic
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         """
         Just a simple demo view for the widgets
         :param request:
@@ -51,4 +51,5 @@ class DemoView(BootsFixedContainerView):
         sub = 'Its a work in progress'
         page_header = display_elements.PageHeader(title, sub=sub)
         elements = {'elements': [page_header, form]}
-        return self.render(elements)
+        return render_to_response(self.template_name, {'elements': [form, page_header]})
+

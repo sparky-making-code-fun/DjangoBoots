@@ -3,6 +3,7 @@
 A demo form so we can easily show off and test
 """
 __author__ = 'sparky'
+from django.conf import settings
 from django import forms
 from boots.forms.boots_base_form import BootsBaseForm
 from boots.fields import fields as boot_fields
@@ -17,6 +18,7 @@ class ErrorExample(BootsBaseForm):
 
 class DemoForm(forms.Form):
     """Just a simple form class to inspect our widgets"""
+
 
     date_range = boot_fields.DateRangeField()
     calendar = boot_fields.CalendarDateField()

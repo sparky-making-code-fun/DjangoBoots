@@ -2,6 +2,8 @@
 """
 Widgets for bootstrap fields
 """
+from django.conf import settings
+
 __author__ = 'sparky'
 from django import forms
 from django.template.loader import render_to_string
@@ -118,7 +120,14 @@ class DollarSignWidget(forms.NumberInput):
         return render_to_string('dollar_sign.html', data, dirs=[template_path])
 
 
-class CalendarWidget(forms.DateInput):
+class CalendarMediaMixin(object):
+    class Media:
+        js = (settings.JS_MEDIA['calendar'],)
+        css = {'all': (settings.CSS_MEDIA['calendar'],)
+        }
+
+
+class CalendarWidget(CalendarMediaMixin, forms.DateInput):
     """
     Calendar date select widget
     """
@@ -143,7 +152,7 @@ class CalendarWidget(forms.DateInput):
         return render_to_string('calendar.html', data, dirs=[template_path])
 
 
-class DateRangeWidget(forms.MultiWidget):
+class DateRangeWidget(CalendarMediaMixin, forms.MultiWidget):
 
     """
 

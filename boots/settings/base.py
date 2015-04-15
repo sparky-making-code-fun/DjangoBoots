@@ -38,6 +38,7 @@ DEFAULT_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 )
 
 PROJECT_APPS = (
@@ -47,6 +48,7 @@ PROJECT_APPS = (
 INSTALLED_APPS = DEFAULT_APPS + PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,10 +100,15 @@ TEMPLATE_DIRS = (
     PATH_PROJECT + '/templates/',
 
 )
-
+JS_MEDIA = {'calendar':
+            'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js'}
+CSS_MEDIA = {'calendar':
+             "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.css" }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 import os
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+

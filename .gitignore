@@ -59,6 +59,7 @@ node_modules
 8416OS_Code
 .ropenproject
 bootstrap-datepicker
+form_validation
 db.sqlite3
 .ropeproject
 reports/
