@@ -1,6 +1,10 @@
 {% extends 'boots/body.html' %}
 {% block content %}
-
-{{ test_content }}
+    {% for element in elements %}
+        {{ element }}
+    {% endfor %}
+    {% for panel in panels %}
+        {{ panel }}
+    {% endfor %}
 
 {% endblock %}

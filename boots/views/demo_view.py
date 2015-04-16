@@ -53,3 +53,23 @@ class DemoView(View):
         elements = {'elements': [page_header, form]}
         return render_to_response(self.template_name, {'elements': [form, page_header]})
 
+class PanelView(BootsFixedContainerView):
+
+    template_name = "boots/test.html"
+
+    def get(self, request, *args, **kwargs):
+
+        my_panel = display_elements.Panel()
+        my_panel.title = 'Happy Panels 1'
+
+        panel_2 = display_elements.Panel()
+        panel_2.title = 'Happy Panels 2'
+        form = boots_forms.DemoForm()
+        title = 'DjangoBoots Panel Demo!'
+        sub = "Isn't Paneling great?"
+        page_header = display_elements.PageHeader(title, sub=sub)
+        my_panel.add(form)
+        panel_2.add(form)
+        elements = {'panels': [my_panel, panel_2], 'elements':[page_header]}
+        return self.render(elements)
+

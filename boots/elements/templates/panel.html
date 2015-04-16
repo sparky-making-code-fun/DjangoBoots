@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{% if title %}<h{{ title_size }}>{{ title }}</h{{ title_size }}>{% endif %}</div>
+  <div class="panel-body">
+    {% for item in contents %}
+      {{ item.media }}
+      {{ item }}
+    {% endfor %}
+  </div>
+</div>
