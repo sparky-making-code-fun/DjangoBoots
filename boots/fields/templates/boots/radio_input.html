@@ -1,9 +1,9 @@
 <div class="input-group">
     <input type="text" class="form-control" aria-label="Favourite Beatle">
     <span class="input-group-addon"></span>
-      <input type="radio" aria-label="...">
+      <input type="radio" aria-label="Favourite Beatle">
 
-    {%  if radio.choices %}
+    {% if radio.choices %}
         <ul>
             {% for choice in radio.choices %}
               <li>{{ choice.beatles }}{{ choice.label }}</li>
