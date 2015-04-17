@@ -55,7 +55,7 @@ class DemoView(View):
 
 class PanelView(BootsFixedContainerView):
 
-    template_name = "boots/test.html"
+    template_name = "boots/paneldemo.html"
 
     def get(self, request, *args, **kwargs):
 
