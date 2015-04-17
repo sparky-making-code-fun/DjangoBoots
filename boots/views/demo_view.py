@@ -61,9 +61,12 @@ class PanelView(BootsFixedContainerView):
 
         my_panel = display_elements.Panel()
         my_panel.title = 'Happy Panels 1'
+        my_panel.panel_type = 'primary'
 
         panel_2 = display_elements.Panel()
         panel_2.title = 'Happy Panels 2'
+        panel_2.panel_type = 'warning'
+        panel_2.footer ='We Gots Footers!'
         form = boots_forms.DemoForm()
         title = 'DjangoBoots Panel Demo!'
         sub = "Isn't Paneling great?"

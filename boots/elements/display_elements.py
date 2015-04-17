@@ -2,6 +2,7 @@
 """
 Display elements from Bootstrap
 """
+from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.safestring import mark_safe
@@ -46,7 +47,9 @@ class PageHeader(BaseDisplayElement):
 class Panel(BaseDisplayElement):
 
     title = None
+    panel_type = 'primary'
     title_size = 3
+    footer = None
     contents = None
     template = None
 
@@ -58,7 +61,10 @@ class Panel(BaseDisplayElement):
 
     def render(self):
 
-        data = {'title': self.title, 'title_size': self.title_size,
+        data = {'title': self.title,
+                'title_size': self.title_size,
+                'footer': self.footer,
+                'panel_type': settings.PANEL_TYPES[self.panel_type],
                 'contents': self.contents}
         if self.template is None:
             template_path = '{0}/templates/'.format(os.path.dirname(
