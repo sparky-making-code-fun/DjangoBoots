@@ -40,7 +40,6 @@ class TestWidgets(django.test.TestCase):
                               attrs={"add_on_text": expected})
         self.assertIn(expected, result)
 
-
     def test_dropdown_widget(self):
 
         data = [{'href': 'http://www.google.com', 'label': 'Google Thing'},
@@ -53,10 +52,15 @@ class TestWidgets(django.test.TestCase):
 
     def test_radio_widget(self):
 
-        radio_widget = widgets.RadioWidget()
-        expected = False
-        result = radio_widget.render()
-
+        data = [{'beatles': 'John', 'label': 'Beatles1'},
+                {'beatles': 'Paul', 'label': 'Beatles2'},
+                {'beatles': 'George', 'label': 'Beatles3'},
+                {'beatles': 'Ringo', 'label': 'Beatles4'}]
+        radio_widget = widgets.RadioWidget(radio={'choices': data},
+                                           attrs={'id': 'testid'})
+        result = radio_widget.render('fake_name', 'fake_value', attrs=radio_widget.attrs)
+        needle = '<li>"John">Beatles1</li>'
+        self.assertInHTML(needle, result)
 
 
 class TestFields(django.test.TestCase):

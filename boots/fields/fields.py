@@ -17,6 +17,7 @@ class RadioField(forms.RadioSelect):
     def __init__(self, radio, *args, **kwargs):
         self.widget = RadioWidget(radio)
         super(RadioField, self).__init__(*args, **kwargs)
+    #widget = RadioWidget
 
 
 class DropDownField(forms.CharField):

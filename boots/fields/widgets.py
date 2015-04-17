@@ -190,12 +190,12 @@ class RadioWidget(forms.RadioSelect):
         self.radio = radio
         super(RadioWidget, self).__init__(**kwargs)
 
-    def render(self, name, value, default=False):
+    def render(self, name, value, attrs=None, choices=()):
 
         data = {'name': name, 'value': value,
-                'default': default, 'radio': self.radio}
-        if default is not False:
-            data.update(default)
+                'attrs': attrs, 'radio': self.radio, 'choices': choices}
+        if attrs is not None:
+            data.update(attrs)
         template_path = '{0}/templates/boots'.format(os.path.dirname(
             os.path.realpath(__file__)))
-        return render_to_string(self.template, data, dirs=[template_path])
+        return render_to_string('radio_input.html', data, dirs=[template_path])
