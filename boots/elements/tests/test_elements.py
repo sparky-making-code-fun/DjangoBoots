@@ -33,3 +33,22 @@ class TestPanel(django.test.TestCase):
         self.assertInHTML(needle, result)
         needle = '<h1>header <small>subber</small></h1>'
         self.assertInHTML(needle, result)
+
+
+class TestNaviation(django.test.TestCase):
+
+    def test_add(self):
+
+        nav = display_elements.Navigation()
+
+        nav.add('label1', '/url1')
+        nav.add('label2', '/url2', rank=0)
+        nav.add('label3', '/url3')
+        nav.add('label4', '/url4', rank=0)
+
+        self.assertEqual(len(nav.urls), 4)
+        self.assertEqual(nav.urls[0], ('label4', '/url4',))
+        self.assertEqual(nav.urls[1], ('label2', '/url2',))
+        self.assertEqual(nav.urls[2], ('label1', '/url1',))
+        self.assertEqual(nav.urls[3], ('label3', '/url3',))
+

@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 import os
 
 
+@python_2_unicode_compatible
 class BaseDisplayElement(object):
     """
     A base class for display elements
@@ -19,8 +20,10 @@ class BaseDisplayElement(object):
         """
         pass
 
+    def __str__(self):
+        return self.render()
 
-@python_2_unicode_compatible
+
 class PageHeader(BaseDisplayElement):
     """A PageHeader element as defined by bootstrap"""
 
@@ -39,19 +42,20 @@ class PageHeader(BaseDisplayElement):
         template_path = '{0}/templates/'.format(os.path.dirname(
             os.path.realpath(__file__)))
         return mark_safe(render_to_string(self.template, data, dirs=[template_path]))
-    def __str__(self):
-        return self.render()
 
 
-@python_2_unicode_compatible
 class Panel(BaseDisplayElement):
 
-    title = None
-    panel_type = 'primary'
-    title_size = 3
+
     footer = None
-    contents = None
+    title = None
+    panel_type = 'info'
+    title_size = '3'
     template = None
+
+    def __init__(self):
+        self.contents = []
+
 
     def add(self, element):
         if self.contents is None:
@@ -73,5 +77,3 @@ class Panel(BaseDisplayElement):
 
         return mark_safe(render_to_string(self.template, data, dirs=[template_path]))
 
-    def __str__(self):
-        return self.render()
