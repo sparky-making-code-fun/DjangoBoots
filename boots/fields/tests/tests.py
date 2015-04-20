@@ -52,14 +52,15 @@ class TestWidgets(django.test.TestCase):
 
     def test_radio_widget(self):
 
-        data = [{'beatles': 'John', 'label': 'Beatles1'},
-                {'beatles': 'Paul', 'label': 'Beatles2'},
-                {'beatles': 'George', 'label': 'Beatles3'},
-                {'beatles': 'Ringo', 'label': 'Beatles4'}]
-        radio_widget = widgets.RadioWidget(radio={'choices': data},
+        choices = [{'beatles': 'John', 'label': 'Beatle1'},
+                   {'beatles': 'Paul', 'label': 'Beatle2'},
+                   {'beatles': 'George', 'label': 'Beatle3'},
+                   {'beatles': 'Ringo', 'label': 'Beatle4'}]
+        radio_widget = widgets.RadioWidget(radio={'choices': choices},
                                            attrs={'id': 'testid'})
+
         result = radio_widget.render('fake_name', 'fake_value', attrs=radio_widget.attrs)
-        needle = '<li>"John">Beatles1</li>'
+        needle = '<li>John:Beatle1</li>'
         self.assertInHTML(needle, result)
 
 
