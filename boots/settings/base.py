@@ -99,6 +99,14 @@ TEMPLATE_DIRS = (
     PATH_PROJECT + '/templates/',
 
 )
+#BOOTS Settings
+PANEL_TYPES = {
+    'primary': 'panel-primary',
+    'success': 'panel-success',
+    'info': 'panel-info',
+    'warning': 'panel-warning',
+    'danger': 'panel-danger'
+}
 JS_MEDIA = {'calendar':
             'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js'}
 CSS_MEDIA = {'calendar':

@@ -1,0 +1,10 @@
+{% extends 'boots/body.html' %}
+{% block content %}
+    {% for element in elements %}
+        {{ element }}
+    {% endfor %}
+    {% for panel in panels %}
+        {{ panel }}
+    {% endfor %}
+
+{% endblock %}
