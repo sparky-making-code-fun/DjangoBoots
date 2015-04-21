@@ -13,7 +13,6 @@ from .widgets import (CalendarWidget,
 
 
 class RadioField(forms.ChoiceField):
-
     def __init__(self, radio, *args, **kwargs):
         self.widget = RadioWidget(radio)
         super(RadioField, self).__init__(*args, **kwargs)
@@ -44,7 +43,6 @@ class DollarSignField(forms.IntegerField):
 
 
 class AtSymbolInputField(forms.CharField):
-
     """
 
     :param text:
@@ -68,7 +66,6 @@ class CalendarDateField(forms.DateField):
 
 
 class DateRangeField(forms.MultiValueField):
-
     """
 
     :param args:

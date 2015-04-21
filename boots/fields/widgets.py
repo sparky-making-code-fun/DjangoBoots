@@ -78,7 +78,6 @@ class DropDownWidget(forms.TextInput):
         super(DropDownWidget, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None):
-
         """
         :param name:
         :param value:
@@ -144,7 +143,6 @@ class CalendarWidget(forms.DateInput):
 
 
 class DateRangeWidget(forms.MultiWidget):
-
     """
 
     :param attrs:
@@ -191,7 +189,6 @@ class RadioWidget(forms.RadioSelect):
         super(RadioWidget, self).__init__(**kwargs)
 
     def render(self, name, value, attrs=None, choices=()):
-
         data = {'name': name, 'value': value,
                 'attrs': attrs, 'radio': self.radio, 'choices': choices}
         if attrs is not None:

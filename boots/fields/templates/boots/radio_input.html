@@ -1,14 +1,15 @@
-<div class="input-group">
-    <input type="text" class="form-control" aria-label="Favourite Beatle">
-    <span class="input-group-addon"></span>
-      <input type="radio" aria-label="Favourite Beatle">
+{% if radio.choices %}
+<div class="row">
+    <div class="col-lg-2">
+        <div class="input-group">
 
-    {% if radio.choices %}
-        <ul>
-            {% for choice in radio.choices %}
-              <li>{{ choice.beatles }}:{{ choice.label }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+            <ul style="list-style:none">
+                {% for choice in radio.choices %}
+                <li><input type="radio" , aria-label="Favourite Beatle">&nbsp;&nbsp;{{ choice.beatles }}</li>
+                {% endfor %}
+            </ul>
 
+        </div>
+    </div>
 </div>
+{% endif %}
