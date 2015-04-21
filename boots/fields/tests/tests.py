@@ -55,8 +55,7 @@ class TestWidgets(django.test.TestCase):
                                            attrs={'id': 'testid'})
 
         result = radio_widget.render('fake_name', 'fake_value', attrs=radio_widget.attrs)
-        print result
-        needle = '<li>Ringo</li>'
+        needle = '<li><input type="radio" , aria-label="Favourite Beatle">&nbsp;&nbsp;Ringo</li>'
         self.assertInHTML(needle, result)
 
 
