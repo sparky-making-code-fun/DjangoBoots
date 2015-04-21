@@ -51,4 +51,5 @@ class DemoView(BootsFixedContainerView):
         sub = 'Its a work in progress'
         page_header = display_elements.PageHeader(title, sub=sub)
         elements = {'elements': [page_header, form]}
+        print form
         return self.render(elements)

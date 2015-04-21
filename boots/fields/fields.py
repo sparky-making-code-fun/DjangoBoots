@@ -12,12 +12,11 @@ from .widgets import (CalendarWidget,
                       RadioWidget)
 
 
-class RadioField(forms.RadioSelect):
+class RadioField(forms.ChoiceField):
 
-    """def __init__(self, radio, *args, **kwargs):
+    def __init__(self, radio, *args, **kwargs):
         self.widget = RadioWidget(radio)
-        super(RadioField, self).__init__(*args, **kwargs)"""
-    widget = RadioWidget
+        super(RadioField, self).__init__(*args, **kwargs)
 
 
 class DropDownField(forms.CharField):
