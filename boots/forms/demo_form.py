@@ -27,8 +27,8 @@ class DemoForm(forms.Form):
         dict(href='http://bing.com', label='Search Bing')])
     searchterm = boot_fields.DropDownField(data, max_length=30)
     radio_choices = dict(choices=[
-        {'beatles': 'John'},
-        {'beatles': 'Paul'},
-        {'beatles': 'George'},
-        {'beatles': 'Ringo'}])
+        {'options': 'John'},
+        {'options': 'Paul'},
+        {'options': 'George'},
+        {'options': 'Ringo'}])
     radio = boot_fields.RadioField(radio_choices)
