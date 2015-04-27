@@ -182,6 +182,7 @@ class DateRangeWidget(forms.MultiWidget):
 
 
 class RadioWidget(forms.RadioSelect):
+    # TODO: BG-11 refactor to use tuple of tuples
     template = "radio_input.html"
 
     def __init__(self, radio, *args, **kwargs):
